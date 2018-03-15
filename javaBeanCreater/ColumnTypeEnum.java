@@ -29,7 +29,7 @@ public enum ColumnTypeEnum {
     BIGINT("bigint", "java.math.BigInteger"),//    --
 
     //sql server
-    DATETIME("datetime", "java.util.Date"),
+    DATETIME("datetime", "org.joda.time.DateTime"),
     NCHAR("nchar", "java.lang.String"),
     NVARCHAR("nvarchar", "java.lang.String"),
     NTEXT("ntext", "java.lang.String"),
