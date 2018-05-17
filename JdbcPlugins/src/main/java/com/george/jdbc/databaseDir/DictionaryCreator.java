@@ -1,7 +1,7 @@
-package com.healthcloud.utils.jdbc.databaseDir;
+package com.george.jdbc.databaseDir;
 
-import com.healthcloud.utils.jdbc.JdbcDao;
-import com.healthcloud.utils.jdbc.databaseDir.entity.TableEntity;
+import com.george.jdbc.JdbcDao;
+import com.george.jdbc.databaseDir.entity.TableEntity;
 
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ import java.util.Map;
 public class DictionaryCreator {
 
     private List<Map<String, Object>> getData(Connection connection, int databaseType, String databaseName, String tableName) {
-        List<Map<String, Object>> res = new ArrayList<>();
+        List<Map<String, Object>> res = new ArrayList<Map<String, Object>>();
         switch (databaseType) {
             case TypeOfSqlString.TYPE_OF_MYSQL:
                 res = JdbcDao.executeSql(connection, TypeOfSqlString.getMySqlString(databaseName, tableName));
@@ -35,8 +35,8 @@ public class DictionaryCreator {
         return res;
     }
 
-    public List<TableEntity> getNySqlDataDictionary(Connection connection, String databaseName, String tableName) {
-        List<TableEntity> dictionary = new LinkedList<>();
+    public List<TableEntity> getMySqlDataDictionary(Connection connection, String databaseName, String tableName) {
+        List<TableEntity> dictionary = new LinkedList<TableEntity>();
         List<Map<String, Object>> data = getData(connection, TypeOfSqlString.TYPE_OF_MYSQL, databaseName, tableName);
 
         for (Map<String, Object> map : data) {
@@ -48,7 +48,7 @@ public class DictionaryCreator {
     }
 
     public List<TableEntity> getSqlServerDataDictionary(Connection connection, String tableName) {
-        List<TableEntity> dictionary = new LinkedList<>();
+        List<TableEntity> dictionary = new LinkedList<TableEntity>();
         List<Map<String, Object>> data = getData(connection, TypeOfSqlString.TYPE_OF_SQLSERVER, "", tableName);
         for (Map<String, Object> map : data) {
             TableEntity tableEntity = new TableEntity();
@@ -70,7 +70,7 @@ public class DictionaryCreator {
     }
 
     public List<TableEntity> getOracleDataDictionary(Connection connection, String databaseName, String tableName) {
-        List<TableEntity> dictionary = new LinkedList<>();
+        List<TableEntity> dictionary = new LinkedList<TableEntity>();
 
         return dictionary;
     }

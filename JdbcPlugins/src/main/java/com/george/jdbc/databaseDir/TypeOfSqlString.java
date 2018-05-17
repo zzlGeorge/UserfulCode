@@ -1,4 +1,4 @@
-package com.healthcloud.utils.jdbc.databaseDir;
+package com.george.jdbc.databaseDir;
 
 /**
  * @author : George
@@ -13,13 +13,13 @@ public class TypeOfSqlString {
 
     public static String getMySqlString(String databaseName, String tableName) {
         return "SELECT\n" +
-                "\tCOLUMN_NAME 列名,\n" +
-                "\tCOLUMN_TYPE 数据类型,\n" +
-                "\tDATA_TYPE 字段类型,\n" +
-                "\tCHARACTER_MAXIMUM_LENGTH 长度,\n" +
-                "\tIS_NULLABLE 是否为空,\n" +
-                "\tCOLUMN_DEFAULT 默认值,\n" +
-                "\tCOLUMN_COMMENT 备注\n" +
+                "\tCOLUMN_NAME colName,\n" +
+                "\tCOLUMN_TYPE colType,\n" +
+                "\tDATA_TYPE dataType,\n" +
+                "\tCHARACTER_MAXIMUM_LENGTH dataLen,\n" +
+                "\tIS_NULLABLE isEmpty,\n" +
+                "\tCOLUMN_DEFAULT defaultVal,\n" +
+                "\tCOLUMN_COMMENT comment\n" +
                 "FROM\n" +
                 "\tINFORMATION_SCHEMA. COLUMNS\n" +
                 "WHERE\n" +

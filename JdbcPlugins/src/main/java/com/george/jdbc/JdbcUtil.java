@@ -1,4 +1,4 @@
-package com.healthcloud.utils.jdbc;
+package com.george.jdbc;
 
 import java.io.InputStream;
 import java.sql.Connection;
@@ -29,7 +29,7 @@ public final class JdbcUtil {
     private static void loadConfig() {
         try {
             InputStream inStream = JdbcUtil.class
-                    .getResourceAsStream("/db.properties");
+                    .getResourceAsStream("/jdbc.properties");
             Properties prop = new Properties();
             prop.load(inStream);
             USERNAME = prop.getProperty("jdbc.username");

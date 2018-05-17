@@ -1,5 +1,6 @@
-package com.healthcloud.utils.javaBeanCreater;
+package com.george.jdbc.javaBeanCreator;
 
+import com.george.jdbc.JdbcDao;
 import org.apache.commons.lang.StringUtils;
 
 import java.io.File;
@@ -72,12 +73,12 @@ public class BeanProcess {
      * @throws IOException
      */
     public static void createBeanInDisk(String classPath, String packagePath, String tableName, String beanClassName, Connection connection) throws IOException {
-        List<ColumnModel> columnModelList = JdbcUtil.getTableStructure(tableName, connection);
+        List<ColumnModel> columnModelList = JdbcDao.getTableStructure(tableName, connection);
         String beanDetail = genJavaBeanFromTableStructure(columnModelList, beanClassName, packagePath);
         System.out.println("已生成数据：\r" + beanDetail);
         String packagePathStr = packagePath.replace(".", "/");
         File javaFile = new File(classPath + File.separator + packagePathStr + File.separator + toFirstCharUpCase(beanClassName) + ".java");
-        unit.FileUtils.writeStringToFile(javaFile, beanDetail);
+        FileUtils.writeStringToFile(javaFile, beanDetail);
     }
 
 

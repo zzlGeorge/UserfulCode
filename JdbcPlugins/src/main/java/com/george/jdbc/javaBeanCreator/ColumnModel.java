@@ -1,4 +1,4 @@
-package com.healthcloud.utils.javaBeanCreater;
+package com.george.jdbc.javaBeanCreator;
 
 /**
  * Created by George on 2017/11/27.

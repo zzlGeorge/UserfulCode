@@ -1,4 +1,4 @@
-package com.healthcloud.utils.jdbc.databaseDir.entity;
+package com.george.jdbc.databaseDir.entity;
 
 /**
  * @author : George
