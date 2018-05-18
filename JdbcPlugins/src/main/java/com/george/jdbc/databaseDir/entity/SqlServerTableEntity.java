@@ -6,17 +6,17 @@ package com.george.jdbc.databaseDir.entity;
  *         Date : Created in 15:24 2018/3/8
  *         Modified By :
  */
-public class TableEntity {
+public class SqlServerTableEntity {
     private int databaseType; //数据库类型
     private Short serialNum; //序号
     private String columnName;
     private String columnRemark;
-    private String dataTyle;
+    private String dataType;
     private Short dataLength;
     private Integer decimalLength;//小数位数
-    private boolean flag;//标识
-    private boolean keyFlag;//主键
-    private boolean allowNull;//允许空
+    private String flag;//标识
+    private String keyFlag;//主键
+    private String allowNull;//允许空
     private String defaultValue;//默认值
 
     public int getDatabaseType() {
@@ -59,12 +59,12 @@ public class TableEntity {
         this.columnRemark = columnRemark;
     }
 
-    public String getDataTyle() {
-        return dataTyle;
+    public String getDataType() {
+        return dataType;
     }
 
-    public void setDataTyle(String dataTyle) {
-        this.dataTyle = dataTyle;
+    public void setDataType(String dataType) {
+        this.dataType = dataType;
     }
 
     public Integer getDecimalLength() {
@@ -75,27 +75,27 @@ public class TableEntity {
         this.decimalLength = decimalLength;
     }
 
-    public boolean isFlag() {
+    public String getFlag() {
         return flag;
     }
 
-    public void setFlag(boolean flag) {
+    public void setFlag(String flag) {
         this.flag = flag;
     }
 
-    public boolean isKeyFlag() {
+    public String getKeyFlag() {
         return keyFlag;
     }
 
-    public void setKeyFlag(boolean keyFlag) {
+    public void setKeyFlag(String keyFlag) {
         this.keyFlag = keyFlag;
     }
 
-    public boolean isAllowNull() {
+    public String getAllowNull() {
         return allowNull;
     }
 
-    public void setAllowNull(boolean allowNull) {
+    public void setAllowNull(String allowNull) {
         this.allowNull = allowNull;
     }
 

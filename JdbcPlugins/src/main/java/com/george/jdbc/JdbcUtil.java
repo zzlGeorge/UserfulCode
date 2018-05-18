@@ -45,6 +45,13 @@ public final class JdbcUtil {
 
     }
 
+    public JdbcUtil(String user, String psw, String driver, String url) {
+        USERNAME = user;
+        PASSWORD = psw;
+        DRIVER = driver;
+        URL = url;
+    }
+
     /**
      * 获取数据库连接
      *

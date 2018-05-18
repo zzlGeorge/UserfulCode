@@ -1,6 +1,8 @@
 package com.george.jdbc.javaBeanCreator;
 
 import com.george.jdbc.JdbcDao;
+import com.george.jdbc.javaBeanCreator.model.ColumnModel;
+import com.george.jdbc.utils.FileUtils;
 import org.apache.commons.lang.StringUtils;
 
 import java.io.File;
@@ -14,12 +16,14 @@ import java.util.List;
 public class BeanProcess {
 
     /**
-     * 从表结构中去生成javabean
+     * 根据表信息生成对应的javabean文件信息
      *
-     * @param beanName
-     * @return
+     * @param columnModelList 列信息
+     * @param beanName        javaBean名字
+     * @param packagePath     包名
+     * @return String
      */
-    public static String genJavaBeanFromTableStructure(List<ColumnModel> columnModelList, String beanName, String packagePath) {
+    private static String generateJavaBeanFromTableStructure(List<ColumnModel> columnModelList, String beanName, String packagePath) {
         StringBuffer sb = new StringBuffer();
         try {
             //java package引入
@@ -72,9 +76,9 @@ public class BeanProcess {
      * @param connection
      * @throws IOException
      */
-    public static void createBeanInDisk(String classPath, String packagePath, String tableName, String beanClassName, Connection connection) throws IOException {
+    private static void createBeanInDisk(String classPath, String packagePath, String tableName, String beanClassName, Connection connection) throws IOException {
         List<ColumnModel> columnModelList = JdbcDao.getTableStructure(tableName, connection);
-        String beanDetail = genJavaBeanFromTableStructure(columnModelList, beanClassName, packagePath);
+        String beanDetail = generateJavaBeanFromTableStructure(columnModelList, beanClassName, packagePath);
         System.out.println("已生成数据：\r" + beanDetail);
         String packagePathStr = packagePath.replace(".", "/");
         File javaFile = new File(classPath + File.separator + packagePathStr + File.separator + toFirstCharUpCase(beanClassName) + ".java");
@@ -88,7 +92,7 @@ public class BeanProcess {
      * @param str
      * @return
      */
-    public static String toFirstCharUpCase(String str) {
+    private static String toFirstCharUpCase(String str) {
         char[] columnCharArr = str.toCharArray();
         StringBuffer sb = new StringBuffer();
         for (int i = 0; i < columnCharArr.length; i++) {
@@ -108,7 +112,7 @@ public class BeanProcess {
      * @param str
      * @return
      */
-    public static String toFirstCharLowCase(String str) {
+    private static String toFirstCharLowCase(String str) {
         char[] columnCharArr = str.toCharArray();
         StringBuffer sb = new StringBuffer();
         for (int i = 0; i < columnCharArr.length; i++) {

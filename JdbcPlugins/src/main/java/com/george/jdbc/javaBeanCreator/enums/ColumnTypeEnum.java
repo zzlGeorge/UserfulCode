@@ -1,4 +1,4 @@
-package com.george.jdbc.javaBeanCreator;
+package com.george.jdbc.javaBeanCreator.enums;
 
 /**
  * Created by George on 2017/11/27.
@@ -21,7 +21,7 @@ public enum ColumnTypeEnum {
     ID("id", "java.lang.Long"),
     DATE("date", "java.util.Date"),
     TIME("time", "java.sql.Time"),
-    //    DATETIME("datetime","java.sql.Timestamp"),
+    DATETIME("datetime", "java.util.Date"),
     TIMESTAMP("timestamp", "java.sql.Timestamp"),
     YEAR("year", "java.util.Date"),
     CHAR("char", "java.lang.String"),
@@ -29,7 +29,7 @@ public enum ColumnTypeEnum {
     BIGINT("bigint", "java.math.BigInteger"),//    --
 
     //sql server
-    DATETIME("datetime", "org.joda.time.DateTime"),
+//    DATETIME("datetime", "org.joda.time.DateTime"),
     NCHAR("nchar", "java.lang.String"),
     NVARCHAR("nvarchar", "java.lang.String"),
     NTEXT("ntext", "java.lang.String"),

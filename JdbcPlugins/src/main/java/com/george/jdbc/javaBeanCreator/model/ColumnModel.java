@@ -1,4 +1,4 @@
-package com.george.jdbc.javaBeanCreator;
+package com.george.jdbc.javaBeanCreator.model;
 
 /**
  * Created by George on 2017/11/27.
@@ -54,15 +54,6 @@ public class ColumnModel {
         this.remarks = remarks;
     }
 
-    @Override
-    public String toString() {
-        return "ColumnModel [columnName=" + columnName + ", dataType="
-                + dataType + ", typeName=" + typeName + ", columnClassName="
-                + columnClassName + ", fieldName=" + fieldName + ", fieldType="
-                + fieldType + ", columnSize=" + columnSize + ", columnDef="
-                + columnDef + ", remarks=" + remarks + "]";
-    }
-
     public String getColumnDef() {
         return columnDef;
     }
@@ -95,4 +86,18 @@ public class ColumnModel {
         this.fieldType = fieldType;
     }
 
+    @Override
+    public String toString() {
+        return "ColumnModel{" +
+                "columnName='" + columnName + '\'' +
+                ", dataType='" + dataType + '\'' +
+                ", typeName='" + typeName + '\'' +
+                ", columnClassName='" + columnClassName + '\'' +
+                ", fieldName='" + fieldName + '\'' +
+                ", fieldType='" + fieldType + '\'' +
+                ", columnSize=" + columnSize +
+                ", columnDef='" + columnDef + '\'' +
+                ", remarks='" + remarks + '\'' +
+                '}';
+    }
 }

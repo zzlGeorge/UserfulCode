@@ -1,13 +1,10 @@
 package com.george.jdbc;
 
-import com.george.jdbc.javaBeanCreator.ColumnModel;
-import com.george.jdbc.javaBeanCreator.ColumnTypeEnum;
+import com.george.jdbc.javaBeanCreator.model.ColumnModel;
+import com.george.jdbc.javaBeanCreator.enums.ColumnTypeEnum;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by George on 2017/8/14.
@@ -70,11 +67,12 @@ public class JdbcDao {
         while (resultSet.next()) {
             Map<String, Object> map = new HashMap<String, Object>();
             for (int i = 0; i < cols_len; i++) {
+//                String cols_name = metaData.getColumnName(i + 1);
                 String cols_name = metaData.getColumnName(i + 1);
                 Object cols_value = resultSet.getObject(cols_name);
-                if (cols_value == null) {
-                    cols_value = "";
-                }
+//                if (cols_value == null) {
+//                    cols_value = "";
+//                }
                 map.put(cols_name, cols_value);
             }
             list.add(map);

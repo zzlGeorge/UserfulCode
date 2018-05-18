@@ -13,13 +13,7 @@ public class TypeOfSqlString {
 
     public static String getMySqlString(String databaseName, String tableName) {
         return "SELECT\n" +
-                "\tCOLUMN_NAME colName,\n" +
-                "\tCOLUMN_TYPE colType,\n" +
-                "\tDATA_TYPE dataType,\n" +
-                "\tCHARACTER_MAXIMUM_LENGTH dataLen,\n" +
-                "\tIS_NULLABLE isEmpty,\n" +
-                "\tCOLUMN_DEFAULT defaultVal,\n" +
-                "\tCOLUMN_COMMENT comment\n" +
+                "\t*\n" +
                 "FROM\n" +
                 "\tINFORMATION_SCHEMA. COLUMNS\n" +
                 "WHERE\n" +
@@ -34,18 +28,18 @@ public class TypeOfSqlString {
                 "\tobj.name\n" +
                 "ELSE\n" +
                 "\t''\n" +
-                "END AS 表名,\n" +
-                " col.colorder AS 序号,\n" +
-                " col.name AS 列名,\n" +
+                "END AS tableName,\n" +
+                " col.colorder AS serialNum,\n" +
+                " col.name AS columnName,\n" +
                 " CAST (\n" +
                 "\tISNULL(ep.[value], '') AS VARCHAR (500)\n" +
-                ") AS 列说明,\n" +
-                " t.name AS 数据类型,\n" +
-                " col.length AS 长度,\n" +
+                ") AS columnRemark,\n" +
+                " t.name AS dataType,\n" +
+                " col.length AS dataLength,\n" +
                 " ISNULL(\n" +
                 "\tCOLUMNPROPERTY(col.id, col.name, 'Scale'),\n" +
                 "\t0\n" +
-                ") AS 小数位数,\n" +
+                ") AS decimalLength,\n" +
                 " CASE\n" +
                 "WHEN COLUMNPROPERTY(\n" +
                 "\tcol.id,\n" +
@@ -55,7 +49,7 @@ public class TypeOfSqlString {
                 "\t'√'\n" +
                 "ELSE\n" +
                 "\t''\n" +
-                "END AS 标识,\n" +
+                "END AS flag,\n" +
                 " CASE\n" +
                 "WHEN EXISTS (\n" +
                 "\tSELECT\n" +
@@ -75,14 +69,14 @@ public class TypeOfSqlString {
                 "\t'√'\n" +
                 "ELSE\n" +
                 "\t''\n" +
-                "END AS 主键,\n" +
+                "END AS keyFlag,\n" +
                 " CASE\n" +
                 "WHEN col.isnullable = 1 THEN\n" +
                 "\t'√'\n" +
                 "ELSE\n" +
                 "\t''\n" +
-                "END AS 允许空,\n" +
-                " ISNULL(comm. TEXT, '') AS 默认值\n" +
+                "END AS allowNull,\n" +
+                " ISNULL(comm. TEXT, '') AS defaultValue\n" +
                 "FROM\n" +
                 "\tdbo.syscolumns col\n" +
                 "LEFT JOIN dbo.systypes t ON col.xtype = t.xusertype\n" +
